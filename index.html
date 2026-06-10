@@ -7,794 +7,725 @@
 
   <style>
     :root {
-      --blauw: #033663;
-      --oranje: #fea020;
-      --groen: #54955c;
-      --paars: #9b81b8;
-      --turquoise: #28b9aa;
-      --lichtblauw: #96d7e9;
-      --koraal: #f56540;
-      --wit: #fdfdfd;
-      --tekst: #1f2933;
-      --zacht: #f7fbfc;
-      --schaduw: 0 12px 30px rgba(3, 54, 99, 0.12);
-      --radius: 26px;
+      --blauw:#033663;
+      --oranje:#fea020;
+      --turquoise:#28b9aa;
+      --paars:#9b81b8;
+      --groen:#54955c;
+      --koraal:#f56540;
+      --lichtblauw:#96d7e9;
+      --wit:#fdfdfd;
+      --zacht:#f4fbfc;
+      --tekst:#1f2933;
+      --schaduw:0 14px 35px rgba(3,54,99,.13);
+      --radius:28px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      font-family:Arial, sans-serif;
+      background:var(--wit);
+      color:var(--tekst);
+      line-height:1.6;
     }
 
-    body {
-      font-family: "Nunito", "Arial Rounded MT Bold", Arial, sans-serif;
-      background: var(--wit);
-      color: var(--tekst);
-      line-height: 1.6;
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    header{
+      background:white;
+      position:sticky;
+      top:0;
+      z-index:10;
+      box-shadow:0 6px 25px rgba(3,54,99,.08);
     }
 
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
     }
 
-    header {
-      background: white;
-      box-shadow: 0 4px 20px rgba(3, 54, 99, 0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    .logo img{
+      height:70px;
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
+    nav ul{
+      display:flex;
+      gap:24px;
+      list-style:none;
+      color:var(--blauw);
+      font-weight:800;
     }
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--blauw);
-      line-height: 1;
+    .btn{
+      display:inline-block;
+      padding:14px 24px;
+      border-radius:999px;
+      font-weight:800;
+      transition:.25s;
     }
 
-    .logo span:nth-child(2) { color: var(--koraal); }
-    .logo span:nth-child(3) { color: var(--oranje); }
-    .logo span:nth-child(4) { color: var(--turquoise); }
-    .logo span:nth-child(5) { color: var(--paars); }
-
-    nav ul {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      font-weight: 800;
-      color: var(--blauw);
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--schaduw);
     }
 
-    .contact-btn {
-      background: var(--blauw);
-      color: white;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: 900;
-    }
+    .btn-oranje{background:var(--oranje);color:white}
+    .btn-blauw{background:var(--blauw);color:white}
+    .btn-turquoise{background:var(--turquoise);color:white}
+    .btn-outline{border:2px solid var(--blauw);color:var(--blauw);background:white}
 
-    .hero {
+    .hero{
       background:
-        radial-gradient(circle at 12% 30%, rgba(150, 215, 233, 0.35), transparent 22%),
-        radial-gradient(circle at 85% 15%, rgba(254, 160, 32, 0.20), transparent 24%),
-        linear-gradient(135deg, #ffffff 0%, #f4fbfc 100%);
-      padding: 76px 0 48px;
-      overflow: hidden;
+        radial-gradient(circle at 10% 30%,rgba(150,215,233,.45),transparent 25%),
+        radial-gradient(circle at 90% 15%,rgba(254,160,32,.25),transparent 25%),
+        var(--zacht);
+      padding:70px 0 50px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 42px;
-      align-items: center;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:45px;
+      align-items:center;
     }
 
-    .eyebrow {
-      color: var(--turquoise);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+    .label{
+      color:var(--turquoise);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
     }
 
-    h1 {
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
-      color: var(--blauw);
-      line-height: 1.05;
-      margin-bottom: 22px;
+    h1{
+      color:var(--blauw);
+      font-size:clamp(2.5rem,5vw,4.8rem);
+      line-height:1.05;
+      margin-bottom:22px;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 620px;
-      margin-bottom: 28px;
+    .hero p{
+      font-size:1.2rem;
+      max-width:620px;
+      margin-bottom:28px;
     }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+    .hero-buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 24px;
-      border-radius: 999px;
-      font-weight: 900;
-      transition: 0.25s ease;
+    .hero-image{
+      background:url("assets/hero.jpg") center/cover;
+      min-height:440px;
+      border-radius:45px;
+      box-shadow:var(--schaduw);
+      position:relative;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--schaduw);
+    .quote{
+      position:absolute;
+      right:20px;
+      bottom:20px;
+      background:var(--blauw);
+      color:white;
+      padding:22px;
+      border-radius:28px;
+      font-size:1.3rem;
+      font-weight:900;
+      max-width:280px;
     }
 
-    .btn-orange {
-      background: var(--oranje);
-      color: white;
+    section{
+      padding:70px 0;
     }
 
-    .btn-blue {
-      background: var(--blauw);
-      color: white;
+    .section-title{
+      text-align:center;
+      color:var(--blauw);
+      font-size:clamp(2rem,4vw,3rem);
+      margin-bottom:12px;
     }
 
-    .btn-outline {
-      border: 2px solid var(--turquoise);
-      color: var(--blauw);
-      background: white;
+    .intro{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 36px;
+      font-size:1.1rem;
     }
 
-    .hero-card {
-      background: white;
-      border-radius: 42px;
-      padding: 34px;
-      box-shadow: var(--schaduw);
-      position: relative;
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
     }
 
-    .hero-visual {
-      aspect-ratio: 1 / 0.82;
-      background:
-        linear-gradient(135deg, rgba(254,160,32,.92), rgba(245,101,64,.9)),
-        url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=80");
-      background-blend-mode: soft-light;
-      background-size: cover;
-      background-position: center;
-      border-radius: 34px;
+    .card{
+      background:white;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--schaduw);
+      display:flex;
+      flex-direction:column;
     }
 
-    .bubble {
-      margin-top: -42px;
-      margin-left: auto;
-      width: 78%;
-      background: var(--blauw);
-      color: white;
-      padding: 22px;
-      border-radius: 28px;
-      font-size: 1.3rem;
-      font-weight: 900;
-      transform: rotate(-2deg);
+    .card-img{
+      height:180px;
+      background-size:cover;
+      background-position:center;
     }
 
-    section {
-      padding: 68px 0;
+    .card-content{
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
     }
 
-    .section-title {
-      color: var(--blauw);
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 14px;
-      text-align: center;
+    .card h3{
+      color:var(--blauw);
+      font-size:1.45rem;
+      margin-bottom:10px;
     }
 
-    .section-intro {
-      max-width: 760px;
-      margin: 0 auto 34px;
-      text-align: center;
-      font-size: 1.1rem;
+    .tag{
+      display:inline-block;
+      width:max-content;
+      padding:6px 12px;
+      border-radius:999px;
+      color:white;
+      font-size:.85rem;
+      font-weight:800;
+      margin-bottom:14px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .card ul{
+      margin:14px 0 22px 18px;
     }
 
-    .card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--schaduw);
-      border: 2px solid rgba(3, 54, 99, 0.05);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 285px;
+    .card .btn{
+      margin-top:auto;
+      width:max-content;
     }
 
-    .icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
-      margin-bottom: 18px;
-      color: white;
+    .blue{background:var(--blauw)}
+    .orange{background:var(--oranje)}
+    .green{background:var(--groen)}
+    .purple{background:var(--paars)}
+    .turquoise{background:var(--turquoise)}
+    .coral{background:var(--koraal)}
+
+    .tabs-area{
+      background:var(--zacht);
     }
 
-    .blue { background: var(--blauw); }
-    .orange { background: var(--oranje); }
-    .green { background: var(--groen); }
-    .purple { background: var(--paars); }
-    .turquoise { background: var(--turquoise); }
-    .coral { background: var(--koraal); }
-
-    .card h3 {
-      color: var(--blauw);
-      font-size: 1.45rem;
-      margin-bottom: 12px;
+    .tabs{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
     }
 
-    .card ul {
-      margin: 12px 0 22px 18px;
+    .tab{
+      background:white;
+      padding:28px;
+      border-radius:var(--radius);
+      box-shadow:var(--schaduw);
+      border-top:8px solid var(--turquoise);
     }
 
-    .small-btn {
-      margin-top: auto;
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 999px;
-      color: white;
-      font-weight: 900;
-      width: fit-content;
+    .tab:nth-child(2){border-color:var(--oranje)}
+    .tab:nth-child(3){border-color:var(--groen)}
+    .tab:nth-child(4){border-color:var(--paars)}
+
+    .tab h3{
+      color:var(--blauw);
+      margin-bottom:12px;
     }
 
-    .tabs-section {
-      background: var(--zacht);
+    .tab li{
+      list-style:none;
+      margin-bottom:9px;
     }
 
-    .tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      background: white;
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: var(--schaduw);
+    .tab li::before{
+      content:"✓ ";
+      color:var(--turquoise);
+      font-weight:900;
     }
 
-    .tab {
-      padding: 26px;
-      border-right: 1px solid #e5eef2;
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
     }
 
-    .tab:last-child {
-      border-right: none;
+    .why{
+      background:white;
+      border-radius:26px;
+      box-shadow:var(--schaduw);
+      padding:28px;
+      text-align:center;
     }
 
-    .tab h3 {
-      color: var(--blauw);
-      margin-bottom: 14px;
+    .why-icon{
+      font-size:2.4rem;
+      margin-bottom:12px;
     }
 
-    .tab li {
-      list-style: none;
-      margin-bottom: 10px;
-      padding-left: 26px;
-      position: relative;
+    .why h3{
+      color:var(--blauw);
+      margin-bottom:8px;
     }
 
-    .tab li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--turquoise);
-      font-weight: 900;
+    .about{
+      background:linear-gradient(135deg,rgba(150,215,233,.35),rgba(254,160,32,.16));
     }
 
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+    .about-grid{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:36px;
+      align-items:center;
     }
 
-    .why {
-      background: white;
-      border-radius: 24px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: var(--schaduw);
+    .sara-img{
+      background:url("assets/sara.jpg") center/cover;
+      min-height:430px;
+      border-radius:40px;
+      box-shadow:var(--schaduw);
     }
 
-    .why strong {
-      color: var(--blauw);
-      display: block;
-      margin-top: 12px;
-      font-size: 1.1rem;
+    .about-text{
+      background:white;
+      padding:38px;
+      border-radius:36px;
+      box-shadow:var(--schaduw);
     }
 
-    .about {
-      background: linear-gradient(135deg, rgba(150,215,233,.25), rgba(254,160,32,.12));
+    .about-text h2{
+      color:var(--blauw);
+      font-size:2.5rem;
+      margin-bottom:16px;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.75fr 1.25fr;
-      gap: 34px;
-      align-items: center;
+    .reviews{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
     }
 
-    .photo-placeholder {
-      border-radius: 34px;
-      min-height: 390px;
-      background:
-        linear-gradient(rgba(3,54,99,.08), rgba(3,54,99,.08)),
-        url("https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--schaduw);
+    .review{
+      background:white;
+      padding:28px;
+      border-radius:26px;
+      box-shadow:var(--schaduw);
     }
 
-    .about-text {
-      background: white;
-      padding: 36px;
-      border-radius: 34px;
-      box-shadow: var(--schaduw);
+    .stars{
+      color:var(--oranje);
+      font-size:1.4rem;
+      margin-bottom:10px;
     }
 
-    .reviews {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .cta{
+      background:var(--blauw);
+      color:white;
+      border-radius:42px;
+      padding:56px 28px;
+      text-align:center;
+      box-shadow:var(--schaduw);
     }
 
-    .review {
-      background: white;
-      padding: 26px;
-      border-radius: 24px;
-      box-shadow: var(--schaduw);
+    .cta h2{
+      font-size:clamp(2rem,4vw,3.4rem);
+      margin-bottom:12px;
     }
 
-    .stars {
-      color: var(--oranje);
-      font-size: 1.3rem;
-      margin-bottom: 10px;
+    footer{
+      background:var(--blauw);
+      color:white;
+      padding:48px 0 20px;
     }
 
-    .cta {
-      background: var(--blauw);
-      color: white;
-      text-align: center;
-      border-radius: 40px;
-      padding: 54px 28px;
-      box-shadow: var(--schaduw);
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:30px;
     }
 
-    .cta h2 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      margin-bottom: 16px;
+    footer img{
+      max-width:170px;
+      margin-bottom:14px;
     }
 
-    footer {
-      background: var(--blauw);
-      color: white;
-      padding: 48px 0 20px;
+    footer h4{
+      color:var(--oranje);
+      margin-bottom:14px;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 28px;
-      margin-bottom: 36px;
+    footer li{
+      list-style:none;
+      margin-bottom:8px;
     }
 
-    footer h4 {
-      margin-bottom: 14px;
-      color: var(--oranje);
+    .bottom{
+      margin-top:32px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.2);
+      font-size:.85rem;
+      opacity:.75;
     }
 
-    footer li {
-      list-style: none;
-      margin-bottom: 8px;
+    @media(max-width:950px){
+      nav ul{display:none}
+      .hero-grid,.about-grid{grid-template-columns:1fr}
+      .cards,.reviews{grid-template-columns:1fr 1fr}
+      .tabs,.why-grid,.footer-grid{grid-template-columns:1fr 1fr}
     }
 
-    .nameservers {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      border-top: 1px solid rgba(255,255,255,.2);
-      padding-top: 16px;
-    }
-
-    @media (max-width: 920px) {
-      nav ul {
-        display: none;
-      }
-
-      .hero-grid,
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cards,
-      .reviews {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .tabs,
-      .why-grid,
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .cards,
-      .reviews,
-      .tabs,
-      .why-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 2.6rem;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        justify-content: center;
-      }
+    @media(max-width:650px){
+      .cards,.reviews,.tabs,.why-grid,.footer-grid{grid-template-columns:1fr}
+      .hero-buttons{flex-direction:column}
+      .btn{text-align:center}
+      .logo img{height:58px}
+      .hero-image{min-height:320px}
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="container nav">
-      <a href="#" class="logo">
-        Studio <span>S</span><span>a</span><span>G</span><span>o</span>
-      </a>
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <img src="assets/logo.png" alt="Studio SaGo logo">
+    </a>
 
-      <nav>
-        <ul>
-          <li><a href="#aanbod">Aanbod</a></li>
-          <li><a href="#tabs">Voor wie?</a></li>
-          <li><a href="#over">Over Sara</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-        </ul>
-      </nav>
+    <nav>
+      <ul>
+        <li><a href="#aanbod">Aanbod</a></li>
+        <li><a href="#voorwie">Voor wie?</a></li>
+        <li><a href="#over">Over Sara</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
 
-      <a class="contact-btn" href="mailto:creativestudiosago@gmail.com">Contact</a>
-    </div>
-  </header>
+    <a class="btn btn-blauw" href="mailto:creativestudiosago@gmail.com">Contact</a>
+  </div>
+</header>
 
-  <main>
+<main>
 
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Educatie • zorg • groei • creativiteit</div>
-          <h1>Groeien, ontdekken en leren op jouw tempo.</h1>
-          <p>
-            Studio SaGo bundelt educatieve workshops, kampen, studiecoaching en begeleiding
-            voor kinderen, jongeren, ouders en scholen.
-          </p>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="label">Studio SaGo</div>
+      <h1>Groeien, ontdekken en leren op jouw tempo.</h1>
+      <p>
+        Educatieve workshops, studiecoaching, kampen en begeleiding voor kinderen,
+        jongeren, ouders en scholen.
+      </p>
 
-          <div class="buttons">
-            <a href="#aanbod" class="btn btn-orange">Ontdek ons aanbod →</a>
-            <a href="https://forms.gle/rr1DJ4jXeowkUNYg6" class="btn btn-blue" target="_blank">Schrijf in →</a>
-            <a href="mailto:creativestudiosago@gmail.com" class="btn btn-outline">Vraag info aan →</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-visual"></div>
-          <div class="bubble">
-            Elk kind heeft talent. Wij helpen het groeien.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="aanbod">
-      <div class="container">
-        <h2 class="section-title">Wat zoek je?</h2>
-        <p class="section-intro">
-          Kies meteen de juiste ingang. Zo vinden ouders, scholen en kinderen sneller wat ze nodig hebben.
-        </p>
-
-        <div class="cards">
-
-          <article class="card">
-            <div>
-              <div class="icon blue">🎓</div>
-              <h3>Klaar voor de Sprong</h3>
-              <p>Begeleiding bij belangrijke overgangsmomenten.</p>
-              <ul>
-                <li>Van kleuter naar lager</li>
-                <li>Van lager naar middelbaar</li>
-              </ul>
-            </div>
-            <a class="small-btn orange" href="https://forms.gle/rr1DJ4jXeowkUNYg6" target="_blank">Inschrijven</a>
-          </article>
-
-          <article class="card">
-            <div>
-              <div class="icon green">🌲</div>
-              <h3>Educatieve kleuterkampen</h3>
-              <p>Speelse kampen waar ontdekken, bewegen en leren samenkomen.</p>
-              <ul>
-                <li>Natuur</li>
-                <li>Creativiteit</li>
-                <li>Spelend leren</li>
-              </ul>
-            </div>
-            <a class="small-btn green" href="https://www.speelweelde.be/kampen/aanbod" target="_blank">Bekijk kampen</a>
-          </article>
-
-          <article class="card">
-            <div>
-              <div class="icon orange">🧠</div>
-              <h3>Studiecoaching</h3>
-              <p>Voor kinderen en jongeren die ondersteuning nodig hebben bij leren leren.</p>
-              <ul>
-                <li>Plannen</li>
-                <li>Organiseren</li>
-                <li>Zelfvertrouwen</li>
-              </ul>
-            </div>
-            <a class="small-btn orange" href="mailto:creativestudiosago@gmail.com">Vraag info</a>
-          </article>
-
-          <article class="card">
-            <div>
-              <div class="icon purple">💜</div>
-              <h3>Zorgaanbod</h3>
-              <p>Warme en afgestemde begeleiding met oog voor prikkels, rust en groei.</p>
-              <ul>
-                <li>Autastisch Avontuur</li>
-                <li>Structuur</li>
-                <li>Veiligheid</li>
-              </ul>
-            </div>
-            <a class="small-btn purple" href="mailto:creativestudiosago@gmail.com">Neem contact op</a>
-          </article>
-
-          <article class="card">
-            <div>
-              <div class="icon turquoise">🥽</div>
-              <h3>VR & educatie</h3>
-              <p>Interactieve workshops voor scholen en organisaties.</p>
-              <ul>
-                <li>Anne Frank VR</li>
-                <li>Pollinator Park</li>
-                <li>Futuclass</li>
-              </ul>
-            </div>
-            <a class="small-btn turquoise" href="mailto:creativestudiosago@gmail.com">Boek workshop</a>
-          </article>
-
-          <article class="card">
-            <div>
-              <div class="icon coral">✍️</div>
-              <h3>Correctie & copywriting</h3>
-              <p>Heldere teksten voor studenten, ondernemers en organisaties.</p>
-              <ul>
-                <li>Correctie</li>
-                <li>Webteksten</li>
-                <li>Promotieteksten</li>
-              </ul>
-            </div>
-            <a class="small-btn coral" href="mailto:creativestudiosago@gmail.com">Vraag offerte</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="tabs" class="tabs-section">
-      <div class="container">
-        <h2 class="section-title">Voor wie is Studio SaGo?</h2>
-        <p class="section-intro">
-          Eén duidelijke website met tabbladen per doelgroep.
-        </p>
-
-        <div class="tabs">
-          <div class="tab">
-            <h3>Voor kinderen</h3>
-            <ul>
-              <li>Kampen</li>
-              <li>Workshops</li>
-              <li>Creatief leren</li>
-              <li>Klaar voor de Sprong</li>
-            </ul>
-          </div>
-
-          <div class="tab">
-            <h3>Voor ouders</h3>
-            <ul>
-              <li>Studiecoaching</li>
-              <li>Huiswerkbegeleiding</li>
-              <li>Zorgaanbod</li>
-              <li>Persoonlijk contact</li>
-            </ul>
-          </div>
-
-          <div class="tab">
-            <h3>Voor scholen</h3>
-            <ul>
-              <li>VR-workshops</li>
-              <li>Educatieve pakketten</li>
-              <li>Leerplandoelen</li>
-              <li>Workshops op maat</li>
-            </ul>
-          </div>
-
-          <div class="tab">
-            <h3>Voor bedrijven</h3>
-            <ul>
-              <li>Copywriting</li>
-              <li>Correctie</li>
-              <li>Educatieve concepten</li>
-              <li>Projectondersteuning</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <h2 class="section-title">Waarom Studio SaGo?</h2>
-
-        <div class="why-grid">
-          <div class="why">
-            <div class="icon blue" style="margin:auto;">❤️</div>
-            <strong>Persoonlijke aanpak</strong>
-            <p>Elk kind wordt gezien.</p>
-          </div>
-
-          <div class="why">
-            <div class="icon orange" style="margin:auto;">📚</div>
-            <strong>Onderwijsexpertise</strong>
-            <p>Gebaseerd op ervaring in onderwijs.</p>
-          </div>
-
-          <div class="why">
-            <div class="icon purple" style="margin:auto;">🌈</div>
-            <strong>Zorg op maat</strong>
-            <p>Met aandacht voor noden en prikkels.</p>
-          </div>
-
-          <div class="why">
-            <div class="icon green" style="margin:auto;">🌱</div>
-            <strong>Groeien met vertrouwen</strong>
-            <p>Stap voor stap vooruit.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="over" class="about">
-      <div class="container about-grid">
-        <div class="photo-placeholder"></div>
-
-        <div class="about-text">
-          <h2 class="section-title" style="text-align:left;">Over Sara</h2>
-          <p>
-            Ik ben Sara, leerkracht, mama en oprichter van Studio SaGo.
-            Vanuit mijn ervaring in onderwijs, zorg en creativiteit help ik kinderen,
-            jongeren, ouders en scholen groeien met vertrouwen.
-          </p>
-          <br />
-          <p>
-            Studio SaGo staat voor warmte, duidelijkheid, structuur en speels leren.
-            Geen standaardaanpak, maar begeleiding die vertrekt vanuit wat iemand nodig heeft.
-          </p>
-          <br />
-          <a href="mailto:creativestudiosago@gmail.com" class="btn btn-orange">Neem contact op →</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container">
-        <h2 class="section-title">Wat anderen zeggen</h2>
-
-        <div class="reviews">
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>“Sara straalt rust en vertrouwen uit. Onze dochter kijkt elke week uit naar de sessies.”</p>
-          </div>
-
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>“De kampen zijn fantastisch georganiseerd en zo leerrijk op een speelse manier.”</p>
-          </div>
-
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>“De studiecoaching bracht structuur, overzicht en meer zelfvertrouwen.”</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="cta">
-          <h2>Klaar om samen te groeien?</h2>
-          <p>Stel je vraag, schrijf in of ontdek welk aanbod bij jou past.</p>
-          <br />
-          <div class="buttons" style="justify-content:center;">
-            <a href="https://forms.gle/rr1DJ4jXeowkUNYg6" target="_blank" class="btn btn-orange">Schrijf in</a>
-            <a href="mailto:creativestudiosago@gmail.com" class="btn btn-outline">Contacteer Studio SaGo</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <div class="logo" style="color:white;">Studio SaGo</div>
-        <p>Educatie, zorg, creativiteit en groei.</p>
-      </div>
-
-      <div>
-        <h4>Aanbod</h4>
-        <ul>
-          <li><a href="https://forms.gle/rr1DJ4jXeowkUNYg6" target="_blank">Klaar voor de Sprong</a></li>
-          <li><a href="https://www.speelweelde.be/kampen/aanbod" target="_blank">Educatieve kleuterkampen</a></li>
-          <li><a href="mailto:creativestudiosago@gmail.com">Studiecoaching</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Voor wie?</h4>
-        <ul>
-          <li>Kinderen</li>
-          <li>Ouders</li>
-          <li>Scholen</li>
-          <li>Bedrijven</li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:creativestudiosago@gmail.com">creativestudiosago@gmail.com</a></li>
-        </ul>
+      <div class="hero-buttons">
+        <a href="#aanbod" class="btn btn-oranje">Ontdek ons aanbod</a>
+        <a href="https://forms.gle/rr1DJ4jXeowkUNYg6" target="_blank" class="btn btn-blauw">Schrijf in</a>
+        <a href="mailto:creativestudiosago@gmail.com" class="btn btn-outline">Vraag info aan</a>
       </div>
     </div>
 
-    <div class="container nameservers">
-      Nameservers: ns.zxcs.nl • ns.zxcs.be • ns.zxcs.eu
+    <div class="hero-image">
+      <div class="quote">Elk kind heeft talent. Wij helpen het groeien.</div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<section id="aanbod">
+  <div class="container">
+    <h2 class="section-title">Ons aanbod</h2>
+    <p class="intro">Duidelijke ingangen zodat bezoekers meteen vinden wat ze zoeken.</p>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-img" style="background-image:url('assets/klaar-voor-de-sprong.jpg')"></div>
+        <div class="card-content">
+          <span class="tag blue">Overgangsmomenten</span>
+          <h3>Klaar voor de Sprong</h3>
+          <p>Voor kinderen die de stap maken naar het eerste leerjaar of het middelbaar.</p>
+          <ul>
+            <li>Taal en wiskunde</li>
+            <li>Plannen en organiseren</li>
+            <li>Zelfvertrouwen</li>
+          </ul>
+          <a class="btn btn-blauw" href="https://forms.gle/rr1DJ4jXeowkUNYg6" target="_blank">Inschrijven</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img" style="background-image:url('assets/kampen.jpg')"></div>
+        <div class="card-content">
+          <span class="tag green">Kampen</span>
+          <h3>Educatieve kleuterkampen</h3>
+          <p>Speelse kampen waar ontdekken, bewegen, leren en beleven centraal staan.</p>
+          <ul>
+            <li>Voor kleuters</li>
+            <li>Educatief en creatief</li>
+            <li>In samenwerking met Speelweelde</li>
+          </ul>
+          <a class="btn btn-oranje" href="https://www.speelweelde.be/kampen/aanbod" target="_blank">Bekijk kampen</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img" style="background-image:url('assets/studiecoaching.jpg')"></div>
+        <div class="card-content">
+          <span class="tag orange">Studie</span>
+          <h3>Studiecoaching</h3>
+          <p>Ondersteuning bij plannen, leren leren, huiswerk en structuur.</p>
+          <ul>
+            <li>Plannen</li>
+            <li>Organiseren</li>
+            <li>Leren leren</li>
+          </ul>
+          <a class="btn btn-oranje" href="mailto:creativestudiosago@gmail.com">Vraag info</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img" style="background-image:url('assets/zorgaanbod.jpg')"></div>
+        <div class="card-content">
+          <span class="tag purple">Zorg op maat</span>
+          <h3>Zorgaanbod</h3>
+          <p>Een warme aanpak met aandacht voor rust, structuur en prikkelverwerking.</p>
+          <ul>
+            <li>Autastisch Avontuur</li>
+            <li>Veilige omgeving</li>
+            <li>Persoonlijke begeleiding</li>
+          </ul>
+          <a class="btn btn-outline" href="mailto:creativestudiosago@gmail.com">Contacteer mij</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img" style="background-image:url('assets/vr-workshops.jpg')"></div>
+        <div class="card-content">
+          <span class="tag turquoise">VR & educatie</span>
+          <h3>VR Workshops</h3>
+          <p>Interactieve educatieve workshops voor scholen en organisaties.</p>
+          <ul>
+            <li>Anne Frank VR</li>
+            <li>Pollinator Park</li>
+            <li>Futuclass</li>
+          </ul>
+          <a class="btn btn-turquoise" href="mailto:creativestudiosago@gmail.com">Boek workshop</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img" style="background-image:url('assets/copywriting.jpg')"></div>
+        <div class="card-content">
+          <span class="tag coral">Tekst</span>
+          <h3>Correctie & copywriting</h3>
+          <p>Heldere teksten voor studenten, ondernemers en organisaties.</p>
+          <ul>
+            <li>Correctie</li>
+            <li>Webteksten</li>
+            <li>Promotieteksten</li>
+          </ul>
+          <a class="btn btn-oranje" href="mailto:creativestudiosago@gmail.com">Vraag offerte</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="voorwie" class="tabs-area">
+  <div class="container">
+    <h2 class="section-title">Voor wie is Studio SaGo?</h2>
+    <p class="intro">De website werkt als een duidelijk portaal met tabbladen per doelgroep.</p>
+
+    <div class="tabs">
+      <div class="tab">
+        <h3>Voor kinderen</h3>
+        <ul>
+          <li>Kampen</li>
+          <li>Workshops</li>
+          <li>Spelend leren</li>
+          <li>Klaar voor de Sprong</li>
+        </ul>
+      </div>
+
+      <div class="tab">
+        <h3>Voor ouders</h3>
+        <ul>
+          <li>Studiecoaching</li>
+          <li>Huiswerkbegeleiding</li>
+          <li>Zorgaanbod</li>
+          <li>Persoonlijk contact</li>
+        </ul>
+      </div>
+
+      <div class="tab">
+        <h3>Voor scholen</h3>
+        <ul>
+          <li>VR-workshops</li>
+          <li>Educatieve pakketten</li>
+          <li>Leerplandoelen</li>
+          <li>Workshops op maat</li>
+        </ul>
+      </div>
+
+      <div class="tab">
+        <h3>Voor bedrijven</h3>
+        <ul>
+          <li>Copywriting</li>
+          <li>Correctie</li>
+          <li>Educatieve projecten</li>
+          <li>Conceptontwikkeling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Waarom kiezen voor Studio SaGo?</h2>
+
+    <div class="why-grid">
+      <div class="why">
+        <div class="why-icon">❤️</div>
+        <h3>Persoonlijk</h3>
+        <p>Elk kind wordt gezien.</p>
+      </div>
+
+      <div class="why">
+        <div class="why-icon">📚</div>
+        <h3>Onderbouwd</h3>
+        <p>Gebaseerd op onderwijskennis.</p>
+      </div>
+
+      <div class="why">
+        <div class="why-icon">🌈</div>
+        <h3>Zorgzaam</h3>
+        <p>Aandacht voor noden en prikkels.</p>
+      </div>
+
+      <div class="why">
+        <div class="why-icon">🌱</div>
+        <h3>Groeigericht</h3>
+        <p>Stap voor stap vooruit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="over" class="about">
+  <div class="container about-grid">
+    <div class="sara-img"></div>
+
+    <div class="about-text">
+      <h2>Over Sara</h2>
+      <p>
+        Ik ben Sara, leerkracht, mama en oprichter van Studio SaGo.
+        Vanuit mijn ervaring in onderwijs, zorg en creativiteit help ik kinderen,
+        jongeren, ouders en scholen groeien met vertrouwen.
+      </p>
+      <br>
+      <p>
+        Studio SaGo staat voor warmte, structuur, duidelijke communicatie en speels leren.
+      </p>
+      <br>
+      <a href="mailto:creativestudiosago@gmail.com" class="btn btn-oranje">Neem contact op</a>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <h2 class="section-title">Wat anderen zeggen</h2>
+
+    <div class="reviews">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Sara is rustig, toegewijd en brengt leerstof duidelijk over.”</p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Een supergemotiveerde en getalenteerde leerkracht. Een echte aanrader!”</p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Een topjuf die met veel betrokkenheid werkt en echt het verschil maakt.”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta">
+      <h2>Klaar om samen te groeien?</h2>
+      <p>Stel je vraag, schrijf in of ontdek welk aanbod bij jou past.</p>
+      <br>
+      <a href="https://forms.gle/rr1DJ4jXeowkUNYg6" target="_blank" class="btn btn-oranje">Schrijf in</a>
+      <a href="mailto:creativestudiosago@gmail.com" class="btn btn-outline">Contacteer Studio SaGo</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <img src="assets/logo.png" alt="Studio SaGo logo">
+      <p>Educatie, zorg, creativiteit en groei.</p>
+    </div>
+
+    <div>
+      <h4>Aanbod</h4>
+      <ul>
+        <li><a href="https://forms.gle/rr1DJ4jXeowkUNYg6" target="_blank">Klaar voor de Sprong</a></li>
+        <li><a href="https://www.speelweelde.be/kampen/aanbod" target="_blank">Educatieve kleuterkampen</a></li>
+        <li><a href="mailto:creativestudiosago@gmail.com">Studiecoaching</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Voor wie?</h4>
+      <ul>
+        <li>Kinderen</li>
+        <li>Ouders</li>
+        <li>Scholen</li>
+        <li>Bedrijven</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:creativestudiosago@gmail.com">creativestudiosago@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container bottom">
+    © Studio SaGo — Nameservers: ns.zxcs.nl • ns.zxcs.be • ns.zxcs.eu
+  </div>
+</footer>
 
 </body>
 </html>
